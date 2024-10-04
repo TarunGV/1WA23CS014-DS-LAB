@@ -10,9 +10,9 @@ int main() {
 
     while(1) {
         printf("\n1: Push\n2: Pop\n3: Display\n4: Exit\n");
-        printf("Enter your choice: ");
+        printf("Enter your choice- ");
         scanf("%d", &choice);
-        
+
         switch (choice) {
             case 1:
                 push();
@@ -20,15 +20,15 @@ int main() {
             case 2:
                 item = pop();
                 if (item != -1) {
-            
+
                     printf("Item deleted is %d\n", item);
                 }
-                break;                                                                      
+                break;
             case 3:
                 display();
                 break;
             case 4:
-                exit(0);  
+                exit(0);
             default:
                 printf("Invalid choice Please try again.\n");
         }
@@ -37,34 +37,30 @@ int main() {
     return 0;
 }
 
-void push(){
+void push(int *item){
     if (top==Max-1){
-    printf("Stack overflow");
-
-    return;
+        printf("Stack Overflow");
+        return;
     }
-    printf("Enter the element to be pushed- ");
-    scanf("%d", &item);
+    printf("Enter the element to be pushed: ");
+    scanf("%d", item);
     top = top +1;
-    s[top]=item;
-    
+    s[top]=*item;
 }
 
-void pop(){
+void pop(int *item){
     if (top ==-1){
-    printf("Stack underflow");
-    
-    return(-1);
+        printf("Stack underflow");
+        return;
     }
-    item = s[top];
+    *item = s[top];
     top= top-1;
-    return item;
 }
 
 void display(){
     if (top==-1){
     printf("Stack is empty");
-    
+
     return;
     }
     for (int i=0;i<=top;i++){
