@@ -1,70 +1,73 @@
-#include<stdio.h>
+#include <stdio.h>
 #define Max 4
-int s[Max], top=-1, i, item;
 
-
+void push(int s[], int *top);
+int pop(int s[], int *top);
+void display(int s[], int top);
 
 int main() {
-    int item;
+    int s[Max];
+    int top = -1;
     int choice;
 
-    while(1) {
+    while (1) {
         printf("\n1: Push\n2: Pop\n3: Display\n4: Exit\n");
-        printf("Enter your choice- ");
+        printf("Enter your choice: ");
         scanf("%d", &choice);
 
         switch (choice) {
             case 1:
-                push();
+                push(s, &top);
                 break;
             case 2:
-                item = pop();
-                if (item != -1) {
-
-                    printf("Item deleted is %d\n", item);
+                {
+                    int item = pop(s, &top);
+                    if (item != -1) {
+                        printf("Item deleted is %d\n", item);
+                    }
                 }
                 break;
             case 3:
-                display();
+                display(s, top);
                 break;
             case 4:
                 exit(0);
             default:
-                printf("Invalid choice Please try again.\n");
+                printf("Invalid choice. Please try again.\n");
         }
     }
 
     return 0;
 }
 
-void push(int *item){
-    if (top==Max-1){
-        printf("Stack Overflow");
+void push(int s[], int *top) {
+    if (*top == Max - 1) {
+        printf("Stack Overflow\n");
         return;
     }
+    int item;
     printf("Enter the element to be pushed: ");
-    scanf("%d", item);
-    top = top +1;
-    s[top]=*item;
+    scanf("%d", &item);
+    (*top)++;
+    s[*top] = item;
 }
 
-void pop(int *item){
-    if (top ==-1){
-        printf("Stack underflow");
+int pop(int s[], int *top) {
+    if (*top == -1) {
+        printf("Stack Underflow\n");
+        return -1; 
+    }
+    return s[(*top)--]; 
+}
+
+void display(int s[], int top) {
+    if (top == -1) {
+        printf("Stack is empty\n");
         return;
     }
-    *item = s[top];
-    top= top-1;
-}
-
-void display(){
-    if (top==-1){
-    printf("Stack is empty");
-
-    return;
-    }
-    for (int i=0;i<=top;i++){
+    printf("Stack elements are:\n");
+    for (int i = 0; i <= top; i++) {
         printf("%d\n", s[i]);
-
     }
 }
+
