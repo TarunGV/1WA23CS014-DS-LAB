@@ -30,7 +30,7 @@ int main() {
             case 4:
                 exit(0);  
             default:
-                printf("Invalid choice. Please try again.\n");
+                printf("Invalid choice Please try again.\n");
         }
     }
 
@@ -39,11 +39,11 @@ int main() {
 
 void push(){
     if (top==Max-1){
-    printf("Stack Overflow");
+    printf("Stack overflow");
 
     return;
     }
-    printf("Enter the element to be pushed: ");
+    printf("Enter the element to be pushed- ");
     scanf("%d", &item);
     top = top +1;
     s[top]=item;
