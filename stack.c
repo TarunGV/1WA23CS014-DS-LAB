@@ -1,9 +1,6 @@
 #include <stdio.h>
 #define Max 4
 
-void push(int s[], int *top);
-int pop(int s[], int *top);
-void display(int s[], int top);
 
 int main() {
     int s[Max];
@@ -55,12 +52,12 @@ void push(int s[], int *top) {
 int pop(int s[], int *top) {
     if (*top == -1) {
         printf("Stack Underflow\n");
-        return -1; 
+        return -1;
     }
-    return s[(*top)--]; 
+    return s[(*top)--];
 }
 
-void display(int s[], int top) {
+void display(int s[], int *top) {
     if (top == -1) {
         printf("Stack is empty\n");
         return;
@@ -70,4 +67,3 @@ void display(int s[], int top) {
         printf("%d\n", s[i]);
     }
 }
-
